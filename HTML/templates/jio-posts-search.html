@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Jio Digital - mock</title>
+    <!-- Bootstrap Minified CSS-->
+	<script src = "js/knockout-3.4.2.js" type = "text/javascript"></script>
+
+	<script src = "js/knockout.mapping-latest.js" type = "text/javascript"></script>
+    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/admin-style.css">
+
+    <!-- Responsive -->
+    <link rel="stylesheet" type="text/css" media="screen" href="css/responsive.css">
+</head>
+
+<body>
+    <header class="bg-white">
+        <!-- Navigation bar -->
+        <nav class="navbar navbar-expand-lg justify-content-normal">
+            <!-- Brand Logo -->
+            <div class="navbar-brand bg-primary">
+                <!-- Toggle button -->
+                <!-- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#GMNav" aria-controls="navbarSupportedContent"
+                            aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button> -->
+                <a class="brand-logo" href="#">
+                    <img src="./images/Jio_logo-700x700.png" alt="jio">
+                </a>
+            </div>
+            <div class="col d-flex navbar-actions justify-content-between">
+                <div class="d-inline-flex">
+                    <form class="form-inline">
+                        <!-- dummy text -->
+                    </form>
+                </div>
+                <div class="d-inline-flex">
+                    <ul class="navbar-nav">
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="adminAccount" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span>Jio User</span>
+                                <span class="account-avatar d-inline-flex align-items-center justify-content-center">
+                                    <span class="admin-icon icon-md icon-user"></span>
+                                </span>
+                            </a>
+                            <div class="dropdown-menu dropdown-menu-right dropdown-account" aria-labelledby="adminAccount">
+                                <div class="d-flex align-items-center mb-3 px-3">
+                                    <span class="account-avatar d-inline-flex align-items-center justify-content-center">
+                                        <span class="admin-icon icon-md icon-user"></span>
+                                    </span>
+                                    <span class="account-info pl-3">
+                                        <span class="customer-name">Jio User</span>
+                                        </br>
+                                        <span class="text-muted">125689</span>
+                                    </span>
+                                </div>
+                                <div role="separator" class="dropdown-divider"></div>
+                                <a class="px-3 py-2 text-danger d-block" href="#">Signout</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+   
+
+   <!-- Search -->
+    <main class="vendors-page d-flex align-items-stretch">
+        <aside class="aside-nav d-flex flex-column justify-content-between">
+            <!-- Menu List -->
+           <ul class="navbar-nav">
+                <li class="nav-item ">
+                    <a class="nav-link" href="jio-posts.html">
+                        <span class="admin-icon icon-md icon-dashboard"></span>
+                        <span>Dashboard</span>
+						
+                    </a>
+                </li>
+                <li class="nav-item active">
+                    <a class="nav-link" href="#.">
+                        <span class="admin-icon icon-md icon-search"></span>
+                        <span>Search</span>
+						<span class="sr-only">(current)</span>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="jio-new-post.html">
+                        <span class="admin-icon icon-md icon-maintenance-plans"></span>
+                        <span>Create Posts</span>
+                        
+                    </a>
+                </li>
+                
+            </ul>
+           
+
+		   <ul class="navbar-nav">
+                <li class="nav-item logout">
+                    <a class="nav-link" href="#">
+                        <span class="admin-icon icon-md icon-logout"></span>
+                        <span>Signout</span>
+                    </a>
+                </li>
+            </ul>
+        </aside>
+        <section class="main-section flex-fill">
+            <div class="row justify-content-center">
+                <div class="col-lg-4 col-xl-3">
+                    <h4 class="mb-4">Search Posts</h4>
+                    <form action="" role="form" style="margin-top:35px">
+
+                        <div class="form-group row">
+                            <label for="vendorNumber" class="col-sm-4 col-form-label text-right">ID</label>
+                            <div class="col-sm-6">
+                                <input type="text" class="form-control" id="postNumber" data-bind="postNoInput: postNoField, valueUpdate:'afterkeydown'">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col-sm-6 offset-sm-4">
+                                 <button class="btn btn-outline-secondary" type="button" data-bind="click: getPostSnips">
+                                    <span class="admin-icon icon-sm icon-search-blue"></span>
+                                    <span>Search</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-lg-6 col-xl-7">
+                    <h4 class="mb-4">Search Results</h4>
+                    <div class="table-responsive">
+					
+                        <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th scope="col" style="width:150px">ID</th>
+                                    <th scope="col">Title</th>
+                                </tr>
+                            </thead>
+							
+                             <tbody data-bind="foreach: postList">
+                                <tr>
+                                    <td>
+                                        
+										<a data-bind="attr: { href: 'jio-post-details.html?id='+id(), title: id }, text: id "></a>
+                                    </td>
+                                    <td data-bind="text: title "></td>
+                                </tr>
+                               
+                            </tbody>
+					   </table>
+					   
+					   <h1 id="no-results" style="display:none">No Results Found</h1>
+					   <h1 id="error-results" style="display:none">Something went wrong try again</h1>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer d-flex justify-content-between">
+        <div class="copyright">
+            <p>Copyright © 2020 Jio Digital (mockup-only). All Rights Reserved.</p>
+        </div>
+        <div class="foo-links">
+            <div class="foo-nav">
+                <div class="foo-nav-item">
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="foo-nav-item">
+                    <a href="#">Careers</a>
+                </div>
+                <div class="foo-nav-item">
+                    <a href="#">Contact Us</a>
+                </div>
+                <div class="foo-nav-item">
+                    <a href="#">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+		 <div id="gm-loader">
+        <span class="loader-img"></span>
+    </div>
+    <!-- jQuery Minified -->
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <!-- Bootstrap jQuery Minified -->
+    <script src="js/bootstrap.min.js"></script>
+    <!-- Custom jQuery -->
+    <script src="js/main.js"></script>
+	
+		<script>
+	
+function PostsPortalViewModel() {
+	
+	
+    var self = this;
+	
+	
+	
+	 var posts = ko.observableArray([]);
+	 self.postList = ko.observableArray();
+  self.query = ko.observable('');
+
+self.updatedvendorList = ko.observableArray();
+this.postNoField = ko.observable('');
+this.isPostIDValid = ko.observable(false);
+this.showSubmit = ko.observable(false);
+
+var allowedInput = function(length, regex,elementType) {
+  return {
+    init: function(element, valueAccessor, allBindingsAccessor, bindingContext) {
+      ko.bindingHandlers.textInput.init(element, valueAccessor, allBindingsAccessor, bindingContext);
+    },
+
+    update: function(element, valueAccessor) {
+      var value = ko.unwrap(valueAccessor());
+      if (value.length >= length || !regex.test(value.slice(-1))) {
+        valueAccessor()(value.slice(0, -1));
+		
+      }else{
+		self.isPostIDValid(true);
+		//showSubmitBtn();
+		
+	  }
+    }
+  }
+};
+
+ko.bindingHandlers.postNoInput = allowedInput(7, new RegExp("^[0-9\b]+$"),'postNo');
+ 
+
+	
+this.getPostSnips = function getPostSnips(){
+	
+			$('#no-results').hide();
+			$('#error-results').hide();
+			var postNo = $('#postNumber').val();
+			var noID = false;
+			var url = 'https://jsonplaceholder.typicode.com/posts?id='+postNo
+			if(''==postNo || 'undefined'==postNo){
+				url = 'https://jsonplaceholder.typicode.com/posts';
+				noID = true;
+				
+			}
+	        $('#gm-loader').show();	
+			$.ajax({
+           type: 'GET',   
+            url: url,
+            contentType: "application/json",
+            dataType: "json",
+          
+            success: function(data) {
+				$('#gm-loader').hide();	
+                var observableData = ko.mapping.fromJS(data);
+				var count = Object.keys(data).length;
+	
+					array1 = observableData();
+
+                
+                self.postList(array1);
+				if(count==0){					
+					$('#no-results').show();
+					$('#error-results').hide();
+				}
+				
+								
+            },
+            error:function(jq, st, error){
+			$('#gm-loader').hide();
+			$('#no-results').hide();
+		    $('#error-results').show();
+                console.log(error);
+            }
+        });
+	};
+
+	
+}
+ko.applyBindings(new PostsPortalViewModel());
+	</script>
+</body>
+
+</html>
